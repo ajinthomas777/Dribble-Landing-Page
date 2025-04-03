@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dribbble Clone</title>
+    <link rel="icon" type="image/png" href="./assets/pngwing.com (1).png">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+
+   
+</head>
+<body>
+    <header>
+        <nav class="border-b-2 shadow-md flex items-center justify-between px-10 py-6 fixed top-0 left-0 w-full bg-white z-50">
+          <!-- Left Section: Logo + Menu -->
+          <div class="flex items-center space-x-6 gap-6">
+            <!-- Toggle Button (Hidden on large screens, visible on small screens) -->
+            <button class="border px-4 py-2 lg:hidden" id="menu-toggle">
+              <i class="fas fa-bars"></i>
+            </button>
+      
+            <!-- Logo -->
+            <a href="#"><img src="./assets/vector13.svg" class="h-10"></a>
+      
+            <!-- Navigation Links -->
+            <ul id="mobile-menu" class="flex space-x-8 hidden lg:flex">
+              <li class="relative">
+                <a class="cursor-pointer dropdown-toggle">Explore <i class="fa-solid fa-chevron-down fa-xs"></i></a>
+                <div class="absolute left-0 top-full mt-2 w-48 bg-white border rounded shadow-lg hidden dropdown-menu">
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200">Popular</a>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200">New and Noteworthy</a>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200">Product Design</a>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200">Web Design</a>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200">Animation</a>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200">Branding</a>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200">Illustration</a>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200">Mobile</a>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200">Typography</a>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200">Print</a>
+                </div>
+              </li>
+      
+              <li class="relative">
+                <a class="cursor-pointer dropdown-toggle">Hire a Designer <i class="fa-solid fa-chevron-down fa-xs"></i></a>
+                <div class="absolute left-0 top-full mt-2 w-48 bg-white border rounded shadow-lg hidden dropdown-menu">
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fa-solid fa-magnifying-glass"></i> Browse Freelancers</a>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fa-solid fa-tag"></i> Purchase Services</a>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fa-regular fa-pen-to-square"></i> Submit a Project Brief</a>
+                  <a href="#" class="block px-4 py-2 hover:bg-gray-200"><i class="fa-regular fa-note-sticky"></i> Post a Full-Time Job</a>
+                </div>
+              </li>
+      
+              <li><a href="#">Find Jobs</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+      
+          <!-- Right Section: Buttons -->
+          <div class="flex space-x-4 items-center">
+            <button type="button" class="border px-4 py-2 hidden md:block text-black border-none font-bold">Sign up</button>
+            <button class="border px-4 py-2 text-white bg-black rounded-full">Log in</button>
+          </div>
+
+
+
+
+
+          <div id="scroll-component" class="hidden md:hidden absolute right-60 top-25 text-white px-4 py-2 rounded-md w-2/5">
+            <form class="max-w-md mx-auto heroSearchbar">   
+              <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+              <div class="relative flex items-center">
+                <!-- Dropdown -->
+                <div class="absolute right-16 top-1/2 -translate-y-1/2 z-10">
+                  <select class="searchBarDropDown text-gray-900 text-sm rounded-full px-3 py-2 focus:outline-none">
+                    <option value="shots">Shots</option>
+                    <option value="designers">Designers</option>
+                    <option value="services">Services</option>
+                  </select>
+                </div>
+          
+                <!-- Search Input -->
+                <input type="search" id="default-search" 
+                  class="heroInputBar block w-full p-4 ps-24 text-sm text-gray-900 rounded-full 
+                        bg-gray-100 border border-gray-100 focus:ring-pink-500 focus:border-pink-500 
+                        hover:bg-white hover:border-pink-500 transition duration-200 
+                        focus:outline-none"
+                  placeholder="What are you looking for?" required />
+          
+                <!-- Search Button -->
+                <button type="submit" 
+                  class="text-white absolute end-2.5 bottom-2.7 bg-pink-600 hover:bg-pink-500 font-medium rounded-full text-sm w-10 h-10 flex items-center justify-center">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+          
+
+
+
+
+
+
+        </nav>
+      </header>
+      
+
+      <!-----Hero section with h1, h4, text box, trending searches-->
+
+      <!-- Hero Section -->
+<section class="heroSection mt-200 mb-10 p-5"> <!-- Reduce bottom margin -->
+  <h1 class="heroHeading mb-4 text-4xl font-extrabold leading-none tracking-tight text-black-900 md:text-5xl lg:text-6xl dark:text-black p-5">
+    Discover the world's top designers
+  </h1>
+  <h4 class="heroDescription p-5">Explore work from the most talented and accomplished designers ready to take on your next project</h4>
+  
+  <form class="max-w-md mx-auto heroSearchbar">   
+    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+    <div class="relative flex items-center">
+      <!-- Dropdown -->
+      <div class="absolute right-16 top-1/2 -translate-y-1/2 z-10">
+        <select class="searchBarDropDown text-gray-900 text-sm rounded-full px-3 py-2 focus:outline-none">
+          <option value="shots">Shots</option>
+          <option value="designers">Designers</option>
+          <option value="services">Services</option>
+        </select>
+      </div>
+      
+      <!-- Search Input -->
+      <input type="search" id="default-search" 
+        class="heroInputBar block w-full p-4 ps-24 text-sm text-gray-900 rounded-full 
+              bg-gray-100 border border-gray-100 focus:ring-pink-500 focus:border-pink-500 
+              hover:bg-white hover:border-pink-500 transition duration-200 
+              focus:outline-none"
+        placeholder="What are you looking for?" required />
+
+      <!-- Search Button -->
+      <button type="submit" 
+        class="text-white absolute end-2.5 bottom-2.7 bg-pink-600 hover:bg-pink-500 font-medium rounded-full text-sm w-10 h-10 flex items-center justify-center">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+  </form>
+
+  <div class="trendingSearches mt-4"> <!-- Reduce margin-top -->
+    <p class="text-gray-400 text-center">Trending searches</p>
+    <div class="flex flex-wrap gap-2 mt-2">
+      <button class="trendingButton">Landing Page</button>
+      <button class="trendingButton">e-commerce</button>
+      <button class="trendingButton">mobile app</button>
+      <button class="trendingButton">logo design</button>
+      <button class="trendingButton">dashboard</button>
+      <button class="trendingButton">icons</button>
+    </div>
+  </div>
+</section>
+
+<!-----Filter Section-->
+<section class="filterSection relative p-5">
+
+</button>
+  <div id="filter-options" class="flex justify-start font-medium overflow-x-auto scroll-smooth scrollbar-hide sm:justify-evenly">
+      <button class="mr-4 whitespace-nowrap">Popular</button>
+      <button class="mr-4 whitespace-nowrap">Discover</button>
+      <button class="mr-4 whitespace-nowrap">Animation</button>
+      <button class="mr-4 whitespace-nowrap">Branding</button>
+      <button class="mr-4 whitespace-nowrap">Illustration</button>
+      <button class="mr-4 whitespace-nowrap">Mobile</button>
+      <button class="mr-4 whitespace-nowrap">Print</button>
+      <button class="mr-4 whitespace-nowrap">Product Design</button>
+      <button class="mr-4 whitespace-nowrap">Typography</button>
+      <button class="mr-4 whitespace-nowrap">Web Design</button>
+      <button class="border-2 p-2 rounded-full px-4 whitespace-nowrap">
+          <i class="fa-solid fa-filter"></i> Filters
+      </button>
+  </div>
+  
+</section>
+
+
+
+
+
+<!-- Gallery Section -->
+<section class="px-10 py-8"> <!-- Reduce padding-top -->
+  <h2 class="text-3xl font-semibold mb-6 ">Trending Shots</h2>
+  
+    <div class="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
+  
+      <div>
+        <div class="relative group">
+            <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-0658f7f31f52821dbd1647c5910fed3d.jpg" alt="">
+            <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+                  <i class="fa-solid fa-bookmark"></i>
+                </a>
+                <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+                    <i class="fa-solid fa-heart"></i>
+                </a>
+            </div>
+        </div>
+        <div class="flex flex-col">
+            <div class="flex flex-row items-center justify-between mt-1">
+                <div class="flex flex-row items-center">
+                    <img
+                        class="h-6 w-6 rounded-full mr-2"
+                        src="./assets/070810be04e642201206c8fbdffcbf8a.png"
+                        alt="Profile"
+                    >
+                    <p class="font-semibold">Walter White</p>
+                </div>
+                <div class="flex flex-row items-center">
+                    <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+                    <p> <i class="fa-solid fa-eye"></i> views</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+      <div class="relative group">
+          <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-06aa2a9affba94c71ba72545173349cf.png" alt="">
+          <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+                  <i class="fa-solid fa-bookmark"></i>
+              </a>
+              <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+                  <i class="fa-solid fa-heart"></i>
+              </a>
+          </div>
+      </div>
+      <div class="flex flex-col">
+          <div class="flex flex-row items-center justify-between mt-1">
+              <div class="flex flex-row items-center">
+                  <img
+                      class="h-6 w-6 rounded-full mr-2"
+                      src="./assets/11352e24e36623649bce720d9969b662.jpg"
+                      alt="Profile"
+                  >
+                  <p class="font-semibold">Jessie Pinkman</p>
+              </div>
+              <div class="flex flex-row items-center">
+                  <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+                  <p><i class="fa-solid fa-eye"></i> views</p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+   
+  <div>
+    <div class="relative group">
+        <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-7bc57b57a1bc1bf08e4ff18d9db23c562.png" alt="">
+        <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+                <i class="fa-solid fa-bookmark"></i>
+            </a>
+            <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+                <i class="fa-solid fa-heart"></i>
+            </a>
+        </div>
+    </div>
+    <div class="flex flex-col">
+        <div class="flex flex-row items-center justify-between mt-1">
+            <div class="flex flex-row items-center">
+                <img
+                    class="h-6 w-6 rounded-full mr-2"
+                    src="./assets/132478660014028bb102f26d71996679.png"
+                    alt="Profile"
+                >
+                <p class="font-semibold">Mike Ehrmantraut</p>
+            </div>
+            <div class="flex flex-row items-center">
+                <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+                <p><i class="fa-solid fa-eye"></i> views</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+  <div class="relative group">
+      <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-9a8fea70ef56746f4600b69fdfbec1a12.png" alt="">
+      <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-bookmark"></i>
+          </a>
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-heart"></i>
+          </a>
+      </div>
+  </div>
+  <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between mt-1">
+          <div class="flex flex-row items-center">
+              <img
+                  class="h-6 w-6 rounded-full mr-2"
+                  src="./assets/14caee1c560c416ae6d5e320e7d5dedc.jpg"
+                  alt="Profile"
+              >
+              <p class="font-semibold">Hank Schrader</p>
+          </div>
+          <div class="flex flex-row items-center">
+              <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+              <p><i class="fa-solid fa-eye"></i> views</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div>
+  <div class="relative group">
+      <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-1d64c0141f3dba0ed924d79833cda2e32.jpg" alt="">
+      <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-bookmark"></i>
+          </a>
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-heart"></i>
+          </a>
+      </div>
+  </div>
+  <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between mt-1">
+          <div class="flex flex-row items-center">
+              <img
+                  class="h-6 w-6 rounded-full mr-2"
+                  src="./assets/1af7e34880aa1fbaa847fefb469fc5cb.jpg"
+                  alt="Profile"
+              >
+              <p class="font-semibold">Saul Goodman</p>
+          </div>
+          <div class="flex flex-row items-center">
+              <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+              <p><i class="fa-solid fa-eye"></i> views</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div>
+  <div class="relative group">
+      <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-23bec340b48db66158bec664b2ed3c29.jpg" alt="">
+      <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-bookmark"></i>
+          </a>
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-heart"></i>
+          </a>
+      </div>
+  </div>
+  <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between mt-1">
+          <div class="flex flex-row items-center">
+              <img
+                  class="h-6 w-6 rounded-full mr-2"
+                  src="./assets/27142d0984a19231593be35a9972bbc4.jpg"
+                  alt="Profile"
+              >
+              <p class="font-semibold">Lalo Salamanca</p>
+          </div>
+          <div class="flex flex-row items-center">
+              <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+              <p><i class="fa-solid fa-eye"></i> views</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div>
+  <div class="relative group">
+      <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-217a398a6d9966cd134745e6efad8aa42.png" alt="">
+      <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-bookmark"></i>
+          </a>
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-heart"></i>
+          </a>
+      </div>
+  </div>
+  <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between mt-1">
+          <div class="flex flex-row items-center">
+              <img
+                  class="h-6 w-6 rounded-full mr-2"
+                  src="./assets/3e7a9cae12ddff5464716c73428efe8f.jpg"
+                  alt="Profile"
+              >
+              <p class="font-semibold">Kim Wexler</p>
+          </div>
+          <div class="flex flex-row items-center">
+              <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+              <p><i class="fa-solid fa-eye"></i> views</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div>
+  <div class="relative group">
+      <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-f664026b762b844a40579a4714872eed2.png" alt="">
+      <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-bookmark"></i>
+          </a>
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-heart"></i>
+          </a>
+      </div>
+  </div>
+  <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between mt-1">
+          <div class="flex flex-row items-center">
+              <img
+                  class="h-6 w-6 rounded-full mr-2"
+                  src="./assets/4b000eb73d1e7c7b2a5ef42e8d55e9e5.png"
+                  alt="Profile"
+              >
+              <p class="font-semibold">Tuco Salamanca</p>
+          </div>
+          <div class="flex flex-row items-center">
+              <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+              <p><i class="fa-solid fa-eye"></i> views</p>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+<div>
+  <div class="relative group">
+      <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-fbe8cd70bf5ce715b54bc118be4068ec.png" alt="">
+      <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-bookmark"></i>
+          </a>
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-heart"></i>
+          </a>
+      </div>
+  </div>
+  <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between mt-1">
+          <div class="flex flex-row items-center">
+              <img
+                  class="h-6 w-6 rounded-full mr-2"
+                  src="./assets/4c145fcf55db7976aa63183a03c7aa65.png"
+                  alt="Profile"
+              >
+              <p class="font-semibold">Gustavo Fring</p>
+          </div>
+          <div class="flex flex-row items-center">
+              <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+              <p><i class="fa-solid fa-eye"></i> views</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div>
+  <div class="relative group">
+      <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-e89c8d27fbc2af233e69c62ef6d2c9902.jpg" alt="">
+      <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-bookmark"></i>
+          </a>
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-heart"></i>
+          </a>
+      </div>
+  </div>
+  <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between mt-1">
+          <div class="flex flex-row items-center">
+              <img
+                  class="h-6 w-6 rounded-full mr-2"
+                  src="./assets/4e34be637dc12a1f5ebae984267b5d8c.png"
+                  alt="Profile"
+              >
+              <p class="font-semibold">Steve Gomez</p>
+          </div>
+          <div class="flex flex-row items-center">
+              <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+              <p><i class="fa-solid fa-eye"></i> views</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div>
+  <div class="relative group">
+      <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-e594fe7b220099d2c969037026b9fca2.png" alt="">
+      <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-bookmark"></i>
+          </a>
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-heart"></i>
+          </a>
+      </div>
+  </div>
+  <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between mt-1">
+          <div class="flex flex-row items-center">
+              <img
+                  class="h-6 w-6 rounded-full mr-2"
+                  src="./assets/b95af5559c14b2e6e65ded563aa21c1d.jpg"
+                  alt="Profile"
+              >
+              <p class="font-semibold">Skinny Pete</p>
+          </div>
+          <div class="flex flex-row items-center">
+              <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+              <p><i class="fa-solid fa-eye"></i> views</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div>
+  <div class="relative group">
+      <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-dd054f6901a2f6cb2fa7d4de3d3c78262.png" alt="">
+      <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-bookmark"></i>
+          </a>
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-heart"></i>
+          </a>
+      </div>
+  </div>
+  <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between mt-1">
+          <div class="flex flex-row items-center">
+              <img
+                  class="h-6 w-6 rounded-full mr-2"
+                  src="./assets/5f7003ae160231aab3118f0d5b33aecf.png"
+                  alt="Profile"
+              >
+              <p class="font-semibold">Hector Salamanca</p>
+          </div>
+          <div class="flex flex-row items-center">
+              <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+              <p><i class="fa-solid fa-eye"></i> views</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div>
+  <div class="relative group">
+      <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-ce3247c3f5ea1d4630bf15420374fae42.png" alt="">
+      <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-bookmark"></i>
+          </a>
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-heart"></i>
+          </a>
+      </div>
+  </div>
+  <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between mt-1">
+          <div class="flex flex-row items-center">
+              <img
+                  class="h-6 w-6 rounded-full mr-2"
+                  src="./assets/606bb85ee728fd3d78bbddf7e70b3901.jpg"
+                  alt="Profile"
+              >
+              <p class="font-semibold">Huell Babineaux</p>
+          </div>
+          <div class="flex flex-row items-center">
+              <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+              <p><i class="fa-solid fa-eye"></i> views</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div>
+  <div class="relative group">
+      <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-f664026b762b844a40579a4714872eed2.png" alt="">
+      <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-bookmark"></i>
+          </a>
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-heart"></i>
+          </a>
+      </div>
+  </div>
+  <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between mt-1">
+          <div class="flex flex-row items-center">
+              <img
+                  class="h-6 w-6 rounded-full mr-2"
+                  src="./assets/62dc313bebbc78f08ffd3076b6228377.png"
+                  alt="Profile"
+              >
+              <p class="font-semibold">Marie Schrader</p>
+          </div>
+          <div class="flex flex-row items-center">
+              <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+              <p><i class="fa-solid fa-eye"></i> views</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div>
+  <div class="relative group">
+      <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/still-0ce18614dd56cf81e54ebf9f7a8f1678.png" alt="">
+      <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-bookmark"></i>
+          </a>
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-heart"></i>
+          </a>
+      </div>
+  </div>
+  <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between mt-1">
+          <div class="flex flex-row items-center">
+              <img
+                  class="h-6 w-6 rounded-full mr-2"
+                  src="./assets/9bbe9e421f5c176b042e81eaaffaf443.jpg"
+                  alt="Profile"
+              >
+              <p class="font-semibold">Badger</p>
+          </div>
+          <div class="flex flex-row items-center">
+              <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+              <p><i class="fa-solid fa-eye"></i> views</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div>
+  <div class="relative group">
+      <img class="h-auto max-w-full rounded-lg mt-3" src="./assets/original-8c460fb9963eac6ff1b382b92d093ef32.png" alt="">
+      <div class="absolute bottom-4 right-4 flex space-x-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-bookmark"></i>
+          </a>
+          <a href="#" class="bg-gray-800 bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-70">
+              <i class="fa-solid fa-heart"></i>
+          </a>
+      </div>
+  </div>
+  <div class="flex flex-col">
+      <div class="flex flex-row items-center justify-between mt-1">
+          <div class="flex flex-row items-center">
+              <img
+                  class="h-6 w-6 rounded-full mr-2"
+                  src="./assets/6fdff994c0eb1767b813d66f4fb1f5e5.jpg"
+                  alt="Profile"
+              >
+              <p class="font-semibold">Marco Salamanca</p>
+          </div>
+          <div class="flex flex-row items-center">
+              <p class="mr-4"><i class="fa-solid fa-heart"></i> likes</p>
+              <p><i class="fa-solid fa-eye"></i> views</p>
+          </div>
+      </div>
+  </div>
+</div>
+</div>
+</section>
+
+<section class="signUpandReset p-9 relative  mt-10 mb-10">
+  <div class="flex justify-center">
+    <button class="border px-4 py-2 text-white bg-black rounded-full text-center hover:bg-black-500">Sign up to continue</button>
+  </div>
+  <button type="submit"
+          class="text-white absolute top-0 right-3 mt-9 bg-gray-600 hover:bg-black font-medium rounded-full text-sm w-10 h-10 flex items-center justify-center">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+</section>
+  
+
+
+
+<section>
+<div class="slider">
+  <div class="slide-track right" id="slide-track">
+      <img class="slide-item" src="./assets/still-00efad9492aa89c840b7a2973e5936f2.png" alt="Image 1">
+      <img class="slide-item" src="./assets/still-0b3d4e16d3c30825b3f7f781a1791ac6.png" alt="Image 2">
+      <img class="slide-item" src="./assets/still-0ce18614dd56cf81e54ebf9f7a8f1678.png" alt="Image 3">
+      <img class="slide-item" src="./assets/still-20e0e9ad6326a4aff383cbf2fdc40932.png" alt="Image 4">
+      <img class="slide-item" src="./assets/still-77c9153865cde84a1b33d0c9b5b5a14a.png" alt="Image 5">
+      <img class="slide-item" src="./assets/still-f825d5bb82e540f41ccfd7bf369b1b8f.png" alt="Image 6">
+      <img class="slide-item" src="./assets/still-a7a3e63d84dfd0403359da9577285998.png" alt="Image 7">
+      <img class="slide-item" src="./assets/still-c8300d7b3c19e9175528c29f3a8d068a.png" alt="Image 8">
+      <img class="slide-item" src="./assets/still-d34b54b7112e3ffb72bb869eec2d3074.png" alt="Image 9">
+      <img class="slide-item" src="./assets/still-f825d5bb82e540f41ccfd7bf369b1b8f.png" alt="Image 10">
+  </div>
+</div>
+</section>
+
+
+
+    <section class="links mt-16 mb-20">
+        <div class="alllinks flex flex-row justify-evenly flex-wrap md:flex-col items-center text-center space-y-4 md:space-y-6 font-medium">
+            <img src="./assets/vector13.svg" class="w-32 h-auto">
+        
+            <div class="mainLinks space-x-6 flex flex-wrap justify-center">
+                <a href="#">For designers</a>
+                <a href="#">Hire Talent</a>
+                <a href="#">Inspiration</a>
+                <a href="#">Advertising</a>
+                <a href="#">Blog</a>
+                <a href="#">About</a>
+                <a href="#">Careers</a>
+                <a href="#">Support</a>
+            </div>
+            
+            <div class="social flex space-x-4 justify-center">
+                <img src="./assets/vector3.svg" class="w-8 h-8">
+                <img src="./assets/vector2.svg" class="w-8 h-8">
+                <img src="./assets/vector4.svg" class="w-8 h-8">
+                <img src="./assets/vector.svg" class="w-8 h-8">
+            </div>
+        </div>
+        </section>
+
+        <footer class="flex justify-around mb-5 flex-wrap md:flex-col items-center text-center">
+            <div class="copyright flex space-x-6">
+                <span>&copy;2025 Dribble</span>
+                <span>Terms</span>
+                <span>Privacy</span>
+                <span>Cookies</span>
+            </div>
+            <div class="links flex space-x-6">
+                <span>Jobs</span>
+                <span>Designers</span>
+                <span>Freelancers</span>
+                <span>Tags</span>
+                <span>Places</span>
+                <span>Resources</span>
+
+            </div>
+        </footer>
+        
+<script src="./script.js"></script>
+
+
+</body>
+</html>

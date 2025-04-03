@@ -1,0 +1,143 @@
+/* ----------Common css---------- */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+}
+
+
+
+
+
+
+.heroHeading{
+  font-family: 'Libre Baskerville', serif;
+}
+.heroInputBar ,.searchBarDropDown{
+  background-color: rgb(239, 236, 236);
+}
+
+.trendingButton {
+  font-size: 0.875rem; /* Equivalent to text-sm */
+  color: rgb(17, 24, 39); /* Equivalent to text-gray-900 */
+  background-color: rgb(243, 244, 246); /* Equivalent to bg-gray-100 */
+  border: 1px solid rgb(243, 244, 246); /* Equivalent to border-gray-100 */
+  border-radius: 9999px; /* Equivalent to rounded-full */
+  padding: 0.25rem 1rem; /* Equivalent to p-1 */
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.trendingButton:hover {
+  background-color: white; /* Equivalent to hover:bg-white */
+  border-color: rgb(229, 231, 235); /* Equivalent to hover:border-gray-200 */
+}
+
+.trendingButton:focus {
+  outline: none;
+  border-color: rgb(236, 72, 153); /* Equivalent to focus:border-pink-500 */
+}
+
+.heroSection {
+  display: flex;
+  flex-direction: column; /* Aligns items in a column */
+  align-items: center; /* Centers items horizontally */
+  justify-content: center; /* Centers items vertically */
+  /* min-height: 100vh; */
+  width: 100%;
+  padding: 20px; /* Avoids content sticking to edges */
+  margin-bottom: 10px; /* Adjust this value as needed */
+  margin-top: 100px;
+ 
+}
+
+.heroSearchbar {
+  width: 100%;
+  max-width: 500px; /* Prevents shrinking */
+}
+
+.heroInputBar {
+  width: 100%; /* Ensures input takes full width */
+}
+
+
+
+
+
+
+
+
+
+
+.filterSection button:hover {
+  font-weight: 300; /* Equivalent to Tailwind's font-light */
+}
+
+
+#filter-options::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+
+
+
+
+
+/*set scroll animation*/
+/* RULES: calc(${width of slide-item + margin left + margin right}px * ${total slide-item}) */
+
+
+@keyframes scroll-right {
+  0% { transform: translateX(calc(-280px * 5)); }
+  100% { transform: translateX(0); }
+}
+
+.slider {
+ 
+  width: 100vw;
+  max-width: 100%; /* Ensures it doesn't exceed the screen width */
+  overflow: hidden;
+}
+
+.slide-track {
+  display: flex;
+  /* width: calc(280px * 10); */
+  width: max-content; /* Allows the track to shrink to fit its content */
+
+}
+
+.slide-track.left{
+  animation: scroll-left 12s linear infinite;
+}
+
+.slide-track.right{
+  animation: scroll-right 12s linear infinite;
+}
+
+.slide-track:hover {
+  animation-play-state: paused;
+}
+
+.slide-item {
+  width:250px;
+  margin: 15px;
+  border-radius: 10px;
+  transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.slide-item:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0 10px 5px -5px rgba(0, 0, 0, 0.678);
+}
+
+@media only screen and (max-width: 600px) {
+  .slider{
+      width: 100vw;
+  }
+} 
